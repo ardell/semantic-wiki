@@ -5,7 +5,17 @@ controller = ($http, $scope) ->
     url:    '/words'
   }).success (response) ->
     $scope.words = response
-
+  
+  $scope.definitionSuggestions = [
+    {"id":1,"title":"man","description":"generic male human"},
+    {"id":2,"title":"man","description":"emphasized grown male"},
+    {"id":3,"title":"man","description":"exclamation - man, I'm tired!"},
+  ]
+  
+  $scope.definition = { id: null }
+  $scope.propertyIsCompleted = ->
+    return $scope.definition.id != null and $scope.definition.id != 'other'
+  
   $scope.startWordIndex = null
   $scope.startWith = (word, $event) ->
     $scope.startWordIndex = $scope.words.indexOf(word)

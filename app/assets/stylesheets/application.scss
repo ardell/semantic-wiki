@@ -24,6 +24,7 @@ body {
 
 body.body-white {
   background-color: #ffffff;
+  color: #222;
 }
 
 body.body-extra-top-padding {
@@ -83,7 +84,6 @@ footer {
 }
 
 .source-text {
-  color: #151515;
   text-align: justify;
 }
 
@@ -92,3 +92,17 @@ footer {
   color: #ffffff;
 }
 
+.propertyPane h3 {
+  color: #1159b4;
+}
+
+.propertyCompleted h3 {
+  color: green;
+}
+
+.propertyPane .searchContainer {
+  margin: 2px;
+  background-color: #1159b4;
+  padding: 2px;
+  border-radius: 5px;
+}

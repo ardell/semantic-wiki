@@ -1,8 +1,8 @@
 <% @body_class = "body-white body-extra-top-padding" %>
 
 <div ng-app="translateAssistant">
-  <div ng-controller="TranslateController" style="font-size: 32pt;">
-    <div class="source-text" ng-mouseup="clearHighlight()">
+  <div ng-controller="TranslateController">
+    <div class="source-text col-lg-8 col-md-6" style="font-size: 32pt;" ng-mouseup="clearHighlight()">
       <span ng-repeat="word in words"
             ng-class="{ 'selection-disabled': true, 'highlighted': indexIsHighlighted($index) }" 
             ng-mousedown="startWith(word, $event)"
@@ -17,6 +17,31 @@
         {{definition.title}} - {{definition.description}}
       </li>
     </ul>
+    <div class="col-lg-4 col-md-6" style="min-height:600px">
+      <div ng-class="{ 'propertyPane': true, 'propertyCompleted': propertyIsCompleted() }">
+        <h3>Definition <span class="glyphicon glyphicon-ok" ng-show="propertyIsCompleted()"></span></h3>
+        <div class="radio">
+          <div ng-repeat="suggestion in definitionSuggestions">
+            <label>
+              <input type="radio" name="definition" id="definition" ng-model="definition.id" value="{{suggestion.id}}">
+              {{suggestion.title}} - {{suggestion.description}}
+            </label>
+          </div>
+          <div>
+            <label>
+              <input type="radio" name="definition" id="definition" ng-model="definition.id" value="other">
+              Other
+            </label>
+          </div>
+          <div class="searchContainer" ng-show="definition.id == 'other'">
+            <div class="has-feedback">
+              <input type="text" class="form-control" placeholder="Search definitions" />
+              <span class="glyphicon glyphicon-search form-control-feedback"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
